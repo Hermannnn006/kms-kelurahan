@@ -1,0 +1,54 @@
+a {
+    text-decoration: none;
+  }
+
+html,
+body{
+  height: 100%;
+
+}
+  #body-content {
+    flex: 1 0 auto;
+  }
+  
+  #footer {
+    flex-shrink: none;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+.card-box {
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 3px;
+  margin-bottom: 30px;
+  background-color: #86efac;
+}
+
+.thumb-lg {
+  height: 88px;
+  width: 88px;
+}
+
+.img-thumbnail {
+  padding: .25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: .25rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.btn-edit {
+  border-radius: 2em;
+  padding: 3px;
+  background-color: #fde047;
+  padding: 5px 30px;
+}
+
+h4 {
+  line-height: 22px;
+  font-size: 18px;
+}
