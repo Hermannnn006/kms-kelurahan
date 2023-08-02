@@ -9,6 +9,7 @@ use App\Http\Controllers\JoblistController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PekerjaanController;
+use App\Http\Controllers\DashboardPegawaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,10 @@ Route::get('/', function () {
     return view('beranda');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+})->middleware(['auth', 'admin']);
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
@@ -37,3 +42,5 @@ Route::resource('/pekerjaan', PekerjaanController::class);
 Route::resource('/forum', ForumController::class);
 Route::resource('/gambar', GambarController::class);
 Route::resource('/profil', ProfilController::class)->middleware('auth');
+
+Route::resource('/dashboard/pegawai', DashboardPegawaiController::class)->middleware(['auth', 'admin']);
