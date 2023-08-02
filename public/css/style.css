@@ -37,15 +37,15 @@ body{
   background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: .25rem;
-  max-width: 100%;
-  height: auto;
+  width: 88px;
+  height: 88px;
 }
 
 .btn-edit {
   border-radius: 2em;
   padding: 3px;
   background-color: #fde047;
-  padding: 5px 30px;
+  padding: 10px 30px;
 }
 
 h4 {
