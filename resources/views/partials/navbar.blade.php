@@ -32,6 +32,8 @@
         {{ auth()->user()->name }}
       </a>
         <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-clipboard-data-fill"></i> 
+              Dashboard</a></li>
           <li><a class="dropdown-item" href="/profil"><i class="bi bi-person-circle"></i> 
               My Profil</a></li>
           <li><hr class="dropdown-divider"></li>
