@@ -20,4 +20,25 @@ class ProfilController extends Controller
             'user' => User::findOrFail($id)
         ]);
     }
+
+    public function update(Request $request, String $id)
+    {
+        $user = User::find($id);
+        $rules = [
+            'name' => 'required|max:50',
+            'nip' => 'required|integer',
+            'email' => 'required|email',
+            // 'password' => 'required',
+            'foto' => 'image|mimes:jpg,png,jpeg|max:1024',
+        ];
+
+        $validator = $request->validate($rules);
+        // $validator['password'] = bcrypt($validator['password']);
+        if($request->file('foto')) {
+            $validator['foto'] = $request->file('foto')->store('img');
+        }
+
+        User::where('id', $user->id)->update($validator);
+        return redirect('/profil')->with('success','Profil berhasil diubah!');
+    }
 }

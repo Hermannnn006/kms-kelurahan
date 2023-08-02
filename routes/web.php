@@ -36,4 +36,4 @@ Route::resource('/joblist', JoblistController::class);
 Route::resource('/pekerjaan', PekerjaanController::class);
 Route::resource('/forum', ForumController::class);
 Route::resource('/gambar', GambarController::class);
-Route::resource('/profil', ProfilController::class)->middleware('auth');;
+Route::resource('/profil', ProfilController::class)->middleware('auth');
