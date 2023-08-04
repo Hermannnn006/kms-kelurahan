@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Forum;
 use App\Models\Pegawai;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -20,6 +21,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $guarded = ['id'];
+
+    public function pertanyaans(){
+        return $this->hasMany(Forum::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
