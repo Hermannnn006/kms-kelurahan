@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Forum;
+use App\Models\Komentar;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -11,54 +13,48 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return view('forum.index');
+        return view('forum.index',[
+            'pertanyaans' => Forum::with(['forum_user', 'komentars'])->get()
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validator = $request->validate([
+            'pertanyaan' => 'required|max:255',
+            'deskripsi' => 'required',
+        ]);
+
+        $validator['user_id'] = auth()->user()->id;
+
+        Forum::create($validator);
+        return redirect('/forum')->with('success', 'pertanyaan berhasil dikirim');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        return view('forum/show',[
+            'pertanyaan' => Forum::with('forum_user')->findOrFail($id),
+            'komentar' => Komentar::with('komentar_user')->where('forum_id', $id)->get()
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function kirimPesan(Request $request)
     {
-        //
+        $validator = $request->validate([
+            'komentar' => 'required',
+            'forum_id' => 'required'
+        ]);
+        $validator['user_id'] = auth()->user()->id;
+        Komentar::create($validator);
+        return back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function incrementForumView(Request $request)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $id = $request->input('pertanyaan_id');
+        // Forum::increment('view', 1, ['id' => $request->input('pertanyaan_id')]);
+        Forum::where('id', $id)->increment('view');
+        return redirect('/forum/' . $id);
     }
 }

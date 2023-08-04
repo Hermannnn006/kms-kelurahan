@@ -52,3 +52,20 @@ h4 {
   line-height: 22px;
   font-size: 18px;
 }
+
+.bg-green{
+  background-color: #bbf7d0;
+}
+
+.bg-slate{
+  background-color: #f1f5f9;
+}
+
+.message-box{
+  background-color: #fff;
+  padding: 20px;
+}
+
+.bg-emerald{
+  background-color: #f0fdf4;
+}

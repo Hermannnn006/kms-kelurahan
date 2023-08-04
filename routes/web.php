@@ -35,11 +35,13 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/kirim-pesan', [ForumController::class, 'kirimPesan']);
+Route::post('/increment-forum-view', [ForumController::class, 'incrementForumView']);
 
 Route::resource('/pegawai', PegawaiController::class);
 Route::resource('/joblist', JoblistController::class);
 Route::resource('/pekerjaan', PekerjaanController::class);
-Route::resource('/forum', ForumController::class);
+Route::resource('/forum', ForumController::class)->middleware('auth');
 Route::resource('/gambar', GambarController::class);
 Route::resource('/profil', ProfilController::class)->middleware('auth');
 

@@ -19,7 +19,7 @@
           <a class="nav-link {{ Request::is('pekerjaan') ? 'active' : '' }}" href="/pekerjaan">Pekerjaan</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link {{ Request::is('forum') ? 'active' : '' }}" href="/forum">Forum</a>
+          <a class="nav-link {{ Request::is('forum*') ? 'active' : '' }}" href="/forum">Forum</a>
           </li>
           <li class="nav-item">
           <a class="nav-link {{ Request::is('gambar') ? 'active' : '' }}" href="/gambar">Data Gambar</a>
