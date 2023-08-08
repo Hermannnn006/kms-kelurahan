@@ -2,15 +2,11 @@
 
 @section('body')
 <div class="container">
-{{-- @dd($user) --}}
     <div class="d-flex justify-content-center">
-        <div class="col-lg-4">
-            <div class="text-center card-box">
-                <div class="thumb-lg mx-auto"><img src="{{ asset('storage/' . $user->foto); }}" class="rounded-circle img-thumbnail" alt="profile-image"></div>
-                <div class="">
-                    <h4>{{ $user->name }}</h4>
-                    <p>{{ $user->level }}</p>
-                </div>
+        <div class="p-4 mt-4 border bg-box col-10 col-md-5 rounded">
+            <div class="thumb-lg mx-auto"><img src="{{ asset('storage/' . $user->foto); }}" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                    <h4 class="text-center">{{ $user->name }}</h4>
+                    <p class="text-center">{{ $user->level }}</p>
                 <div class="d-flex justify-content-between">
                     <div><h6 class="mb-0">NIP</h6></div>
                       <div>{{ $user->nip }}</div>
@@ -26,8 +22,9 @@
                       <div>{{ $user->email }}</div>
                 </div>
                 <hr>
-                <a href="/profil/{{ $user->id }}/edit" class="btn-edit text-dark">Update Profil</a>
-            </div>
+                <div class="text-center"> 
+                    <a href="/profil/{{ $user->id }}/edit" class="btn-edit text-dark">Update Profil</a>
+                </div>
         </div>
     </div>
 </div>

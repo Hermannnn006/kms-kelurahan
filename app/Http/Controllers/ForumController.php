@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 
 class ForumController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return view('forum.index',[
@@ -24,9 +21,7 @@ class ForumController extends Controller
             'pertanyaan' => 'required|max:255',
             'deskripsi' => 'required',
         ]);
-
         $validator['user_id'] = auth()->user()->id;
-
         Forum::create($validator);
         return redirect('/forum')->with('success', 'pertanyaan berhasil dikirim');
     }
@@ -53,7 +48,6 @@ class ForumController extends Controller
     public function incrementForumView(Request $request)
     {
         $id = $request->input('pertanyaan_id');
-        // Forum::increment('view', 1, ['id' => $request->input('pertanyaan_id')]);
         Forum::where('id', $id)->increment('view');
         return redirect('/forum/' . $id);
     }

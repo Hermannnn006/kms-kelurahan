@@ -3,7 +3,7 @@
 @section('body')
 <div class="container">
     <div class="d-flex justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-12 col-lg-8">
             <div class="card-box">
                 <form method="post" action="/profil/{{ $user->id }}" class="mb-5" enctype="multipart/form-data">
                     @csrf
@@ -51,15 +51,6 @@
                           </div>
                           @enderror
                       </div>
-                      {{-- <div class="form-outline mb-4">
-                        <label class="form-label">Password</label>
-                          <input type="password" name="password" class="form-control form-control-lg" required />
-                          @error('password')
-                          <div class="invalid-feedback">
-                              {{ $message }}
-                          </div>
-                          @enderror
-                        </div> --}}
                         <div class="pt-1 mb-4 text-center">
                           <button class="btn btn-primary btn-lg btn-block" type="submit">Update Profil</button>
                         </div>

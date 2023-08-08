@@ -41,7 +41,6 @@
                   <h5 class="card-title">{{ $pertanyaan->pertanyaan }}</h5>
                   <p class="card-text">{{ Str::limit($pertanyaan->deskripsi, 30) }}</p>
                     <p class="card-text d-inline me-3"><small class="text-muted">{{ $pertanyaan->forum_user->name }} {{ $pertanyaan->created_at->diffForHumans() }}</small></p>
-
                     {{-- <a href="/forum/{{ $pertanyaan->id }}" class="text-dark me-3"><i class="bi bi-chat-dots"> {{ $pertanyaan->komentars->count() }}</i></a> --}}
                     <form method="post" action="/increment-forum-view" class="d-inline">
                       @csrf
@@ -61,5 +60,4 @@
     </div>
   </div>
 </div>
-
 @endsection

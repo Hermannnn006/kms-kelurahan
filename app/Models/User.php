@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Forum;
 use App\Models\Pegawai;
+use App\Models\Pengetahuan;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -24,6 +25,10 @@ class User extends Authenticatable
 
     public function pertanyaans(){
         return $this->hasMany(Forum::class);
+    }
+
+    public function pengetahuans(){
+        return $this->hasMany(Pengetahuan::class);
     }
 
     /**

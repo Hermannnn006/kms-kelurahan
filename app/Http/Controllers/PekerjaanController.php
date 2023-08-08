@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pekerjaan;
 use Illuminate\Http\Request;
 
 class PekerjaanController extends Controller
@@ -11,54 +12,37 @@ class PekerjaanController extends Controller
      */
     public function index()
     {
-        return view('pekerjaan.index');
+        return view('pekerjaan.index', [
+            'pekerjaans' => Pekerjaan::all()
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function create(){
+        return view('pekerjaan.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $pekerjaan = Pekerjaan::find($id);
+        $pekerjaan->update([
+            'status' => $request->status
+        ]);
+        return redirect('/pekerjaan')->with('success', 'Status berhasil diubah');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $pekerjaan = Pekerjaan::find($id);
+        Pekerjaan::destroy($pekerjaan->id);
+        return redirect('/pekerjaan')->with('danger', 'Data berhasil dihapus');
+    }
+
+    public function store(Request $request)
+    {
+           $validator = $request->validate([
+               'pekerjaan' => 'required|max:50',
+           ]);
+           Pekerjaan::create($validator);
+           return redirect('/pekerjaan')->with('success','Data berhasil disimpan');
     }
 }
