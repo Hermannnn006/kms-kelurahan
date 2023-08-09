@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'level' => 'admin',
             'password' => bcrypt('password'),
-            'foto' =>'/img/profil.jpg',
+            'foto' =>'img/profil.jpg',
             'remember_token' => 'tokenadmin'
         ]);
         User::create([
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'user@gmail.com',
             'level' => 'user',
             'password' => bcrypt('password'),
-            'foto' =>'/img/profil.jpg',
+            'foto' =>'img/profil.jpg',
             'remember_token' => 'tokenuser'
         ]);
         User::create([
@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'herman@gmail.com',
             'level' => 'user',
             'password' => bcrypt('password'),
-            'foto' =>'/img/profil.jpg',
+            'foto' =>'img/profil.jpg',
             'remember_token' => 'tokenuserr'
         ]);
 

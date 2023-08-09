@@ -39,14 +39,13 @@
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $pekerjaan->pekerjaan }}</td>
-                  {{-- <td>{{ $pekerjaan->status }}</td> --}}
                   <td>{{ \Carbon\Carbon::parse($pekerjaan->created_at)->format('d-m-Y')}}</td> 
                   @if (auth()->user()->level == 'admin')    
                   <td>
                     <form action="/pekerjaan/{{ $pekerjaan->id }}" method="post" class="row">
                         @csrf
                         @method('put')
-                          <div class="form-group col-md-7">
+                          <div class="form-group col-8">
                               <select class="form-control" name="status">
                                   <option value="belum selesai" @selected($pekerjaan->status == 'belum selesai')>Belum Selesai</option>
                                   <option value="selesai" @selected($pekerjaan->status == 'selesai')>Selesai</option>

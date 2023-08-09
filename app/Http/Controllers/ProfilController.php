@@ -26,14 +26,12 @@ class ProfilController extends Controller
         $user = User::find($id);
         $rules = [
             'name' => 'required|max:50',
-            'nip' => 'required|integer',
-            'email' => 'required|email',
-            // 'password' => 'required',
+            'nip' => 'required|integer|unique:users,nip,'.$id,
+            'email' => 'required|email|unique:users,email,'.$id,
             'foto' => 'image|mimes:jpg,png,jpeg|max:1024',
         ];
 
         $validator = $request->validate($rules);
-        // $validator['password'] = bcrypt($validator['password']);
         if($request->file('foto')) {
             $validator['foto'] = $request->file('foto')->store('img');
         }

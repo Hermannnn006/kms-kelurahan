@@ -28,5 +28,8 @@
             </div>
         </div>
     @endif
+    <div class="mt-3 text-center">
+        <a href="/pengetahuan" class="btn btn-danger">Kembali</a>
+    </div>
 </div>
 @endsection

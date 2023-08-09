@@ -44,7 +44,7 @@
                 @endforeach
                 @else
                 <tr>
-                    <td colspan="6" class="text-center">Belum ada data</td>
+                    <td colspan="6" class="text-center">Anda belum mengupload data</td>
                 </tr>
                 @endif
               </tbody>

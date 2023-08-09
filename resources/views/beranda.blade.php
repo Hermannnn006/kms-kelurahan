@@ -9,7 +9,7 @@
           <h1>Knowledge Management System</h1>
           <p>Knowledge Management System adalah sistem yang digunakan untuk mengidentifikasi, mengumpulkan, menyimpan, menganalisis, dan membagikan pengetahuan di dalam suatu organisasi.</p>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="/pengetahuan" class="btn btn-success rounded px-2">Mulai</a>
+            <a href="/pengetahuan" class="btn btn-success rounded ps-3 pe-3 p-2 mb-3">Mulai</a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
