@@ -16,13 +16,13 @@
           <a class="nav-link {{ Request::is('joblist') ? 'active' : '' }}" href="/joblist">Joblist</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link {{ Request::is('pekerjaan') ? 'active' : '' }}" href="/pekerjaan">Pekerjaan</a>
+          <a class="nav-link {{ Request::is('pekerjaan*') ? 'active' : '' }}" href="/pekerjaan">Pekerjaan</a>
           </li>
           <li class="nav-item">
           <a class="nav-link {{ Request::is('forum*') ? 'active' : '' }}" href="/forum">Forum</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link {{ Request::is('gambar') ? 'active' : '' }}" href="/gambar">Data Gambar</a>
+          <a class="nav-link {{ Request::is('pengetahuan*') ? 'active' : '' }}" href="/pengetahuan">Data Pengetahuan</a>
           </li>
     </ul>
     <ul class="navbar-nav ms-auto">

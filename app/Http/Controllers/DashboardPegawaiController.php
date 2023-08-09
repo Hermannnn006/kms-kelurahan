@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Forum;
+use App\Models\Pengetahuan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardPegawaiController extends Controller
 {
@@ -25,11 +28,9 @@ class DashboardPegawaiController extends Controller
                'email' => 'required|email|unique:users',
                'password' => 'required|min:5|max:255'
            ]);
-   
            $validator['password'] = bcrypt($validator['password']);
            $validator['level'] = 'user';
            $validator['foto'] = 'img/profil.jpg';
-   
            User::create($validator);
            return redirect('/dashboard/pegawai')->with('success','Data berhasil disimpan');
     }
@@ -46,8 +47,8 @@ class DashboardPegawaiController extends Controller
         $user = User::find($id);
         $rules = [
             'name' => 'required|max:50',
-            'nip' => 'required|integer',
-            'email' => 'required|email',
+            'nip' => 'required|integer|unique:users,nip,'.$id,
+            'email' => 'required|email|unique:users,email,'.$id,
         ];
 
         $validator = $request->validate($rules);
@@ -61,8 +62,11 @@ class DashboardPegawaiController extends Controller
 
     public function destroy(string $id)
     {
-        $user = User::find($id);
-        User::destroy($user->id);
+        DB::transaction(function () use ($id): void {
+            Forum::where('user_id', $id)->delete();
+            Pengetahuan::where('user_id', $id)->delete();
+            User::destroy($id);
+        });
         return redirect('/dashboard/pegawai')->with('danger', 'Data pegawai berhasil dihapus');
     }
 }

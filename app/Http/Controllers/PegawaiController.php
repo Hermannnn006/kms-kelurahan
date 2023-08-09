@@ -10,7 +10,7 @@ class PegawaiController extends Controller
     public function index()
     {
         return view('pegawai.index',[
-            'pegawais' => User::where('level', '!=', 'admin')->orderBy('name')->get()
+            'pegawais' => User::where('level', '!=', 'admin')->orderBy('name')->paginate(10)->withQueryString()
         ]);
     }
 }

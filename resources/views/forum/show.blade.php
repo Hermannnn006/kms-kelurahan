@@ -9,7 +9,7 @@
             </div>
             <div>
                 <span class="d-block text-capitalize">{{ $pertanyaan->forum_user->name }}</span>
-                <small class="text-muted">{{ $pertanyaan->created_at->diffForHumans() }}</small>
+                <small class="text-muted">{{ $pertanyaan->created_at->diffForHumans() }}  <i class="bi bi-eye-fill"></i> {{ $pertanyaan->view }}</small>
                 <p class="fs-5 bg-secondary py-1 px-2 text-white rounded text-capitalize">Pertanyaan: {{ $pertanyaan->pertanyaan }}</p>
             </div>
         </div>
@@ -23,7 +23,7 @@
         <h5>Jawaban</h5>
         @if ($komentar->count())
         @foreach ($komentar as $komen)      
-            <small class="bg-info rounded px-2 text-white mb-1">{{ $komen->komentar_user->name }}</small>
+            <small class="bg-success rounded px-2 text-white mb-1">{{ $komen->komentar_user->name }}</small>
             <div class="message-box rounded mb-3 border">
                 {{ $komen->komentar }}
             </div>
